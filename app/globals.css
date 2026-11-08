@@ -1,26 +1,144 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
   font-family: Arial, Helvetica, sans-serif;
+  color: #222222;
+}
+
+button {
+  font-family: inherit;
+}
+
+.leaflet-container {
+  font-family: inherit;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  height: 100vh;
+}
+
+.map {
+  min-width: 0;
+}
+
+.panel {
+  order: 2;
+  padding: 24px;
+  border-left: 1px solid #dddddd;
+}
+
+h1 {
+  margin: 0 0 20px;
+  font-size: 24px;
+}
+
+.fuels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fuels button {
+  padding: 8px 14px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  background: #fff;
+  color: #222222;
+  cursor: pointer;
+}
+
+.fuels button.on {
+  background: #222222;
+  border-color: #222222;
+  color: #fff;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 24px 0 0;
+}
+
+.tier {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.tier i {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  border-radius: 50%;
+}
+
+.tier small {
+  margin-left: auto;
+}
+
+.info {
+  margin: 24px 0 12px;
+  color: #666666;
+}
+
+ol {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+}
+
+li span {
+  min-width: 0;
+}
+
+li b {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+small {
+  color: #666666;
+}
+
+@media (max-width: 760px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .panel {
+    order: 0;
+    padding: 16px;
+    border-left: 0;
+    border-bottom: 1px solid #dddddd;
+  }
+
+  li:nth-child(n + 3) {
+    display: none;
+  }
 }
